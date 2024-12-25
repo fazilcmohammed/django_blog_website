@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="{% static "assets/img/favicon.ico" %}">
+<title>Mediumish - A Medium style template by WowThemes.net</title>
+<!-- Bootstrap core CSS -->
+<link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{% static "assets/css/mediumish.css" %}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Begin Nav
+================================================== -->
+<nav class="navbar navbar-light bg-white fixed-top mediumnavigation container">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		{% comment %} <span class="navbar-toggler-icon"></span> {% endcomment %}
+	</button>
+	<div class="container d-flex justify-content-between align-items-center w-100">
+		<!-- Begin Logo -->
+		<a class="navbar-brand" href="{% url 'home' %}">
+			<img src="{% static 'assets/img/logo.png' %}" alt="logo">
+		</a>
+		<!-- End Logo -->
+		{% if full_name %}
+			<h5 class="mb-0 ml-4 font-weight-bold">Welcome <a href="{% url "profile" %}">{{ full_name }}</a></h5>
+		{% endif %}
+		<!-- Begin Menu (Nav Links) -->
+		<ul class="navbar-nav d-flex flex-row  align-items-center mx-4 font-weight-bold">
+			{% if user.is_authenticated %}
+				<li class="nav-item active">
+					<a class="nav-link ml-4" href="index.html">Stories <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="{% url 'write' %}">Write</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="#">My Blogs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="{% url 'signout' %}">Logout</a>
+				</li>
+			{% else %}
+				<li class="nav-item active">
+					<a class="nav-link ml-4" href="index.html">Stories <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="{% url 'signin' %}">Write</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="{% url 'signin' %}">Author</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ml-4" href="{% url 'signin' %}">Get Started</a>
+				</li>
+			{% endif %}
+		</ul>
+		<!-- End Menu (Nav Links) -->
+
+		<!-- Begin Welcome Message -->
+		
+		<!-- End Welcome Message -->
+	</div>
+</nav>
+
+	
+	<!-- End Nav
+	 
+	================================================== -->
+
+	<div class="container">
+
+        {% block content %}
+    
+        {% endblock content %}
+    </div>
+
+	<!-- Begin Footer
+	================================================== -->
+	<div class="footer container">
+		<p class="pull-left">
+			 Copyright &copy; 2017 Your Website Name
+		</p>
+		<p class="pull-right">
+			 Mediumish Theme by <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a>
+		</p>
+		<div class="clearfix">
+		</div>
+	</div>
+	<!-- End Footer
+	================================================== -->
+
+
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static "assets/js/jquery.min.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/ie10-viewport-bug-workaround.js" %}"></script>
+</body>
+</html>
