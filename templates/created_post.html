@@ -31,6 +31,15 @@
       object-fit: cover;
       margin-right: 10px;
     }
+    .post-image {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .post-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
     .meta-info {
       font-size: 0.9rem;
       color: #777;
@@ -70,6 +79,12 @@
         </div>
       </div>
     </div>
+
+    {% if post.image %}
+    <div class="post-image mt-4">
+      <img src="{{ post.image.url }}" alt="Post image">
+    </div>
+    {% endif %}
 
     <div class="content mt-4">
       <p>{{ post.content }}</p>
