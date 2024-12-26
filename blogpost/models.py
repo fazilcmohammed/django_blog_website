@@ -15,7 +15,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='post_images/', blank=True, null=True, default='post_images/3.jpg')
+    image = models.ImageField(upload_to='post_images/', blank=True, null=True)
     priority = models.IntegerField(default=0)
     delete_status = models.IntegerField(choices=DELETE_CHOICES, default=LIVE)
     created_at = models.DateTimeField(auto_now_add=True)
