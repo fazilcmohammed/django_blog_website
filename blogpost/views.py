@@ -10,8 +10,9 @@ def home(request):
         full_name = None
 
     articles = Post.objects.all()
+    featured_posts = Post.objects.order_by('priority')[:4]
 
-    return render(request, 'home.html', {'full_name' : full_name, "articles" : articles})
+    return render(request, 'home.html', {'full_name' : full_name, "articles" : articles, "featured":featured_posts})
 
 @login_required
 def newpost(request):
