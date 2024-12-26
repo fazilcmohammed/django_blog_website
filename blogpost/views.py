@@ -8,7 +8,7 @@ def home(request):
         full_name = f"{request.user.first_name} {request.user.last_name}" 
     else: 
         full_name = None
-
+    # posts = get_object_or_404(Post, id=id)
     articles = Post.objects.all()
     featured_posts = Post.objects.order_by('priority')[:4]
 
