@@ -9,7 +9,9 @@ def home(request):
     else: 
         full_name = None
 
-    return render(request, 'home.html', {'full_name' : full_name})
+    articles = Post.objects.all()
+
+    return render(request, 'home.html', {'full_name' : full_name, "articles" : articles})
 
 @login_required
 def newpost(request):
@@ -38,4 +40,6 @@ def createdpost(request, id):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, id=id)
-    return render(request, 'post_detail.html', {'post': post})
+    posts = Post.objects.filter(author=request.user, delete_status=Post.LIVE)
+    
+    return render(request, 'post_detail.html', {'post': post, 'posts':posts})
